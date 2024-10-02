@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
-const URI = process.env.MongoDBURI;
 
 app.use("/book", BookRoute);
 app.use("/user", UserRoute);
@@ -22,7 +21,7 @@ main()
     }).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(URI);
+  await mongoose.connect("mongodb://127.0.0.1:27017/BookStore");
 }
 
 app.get("/", (req, res) => {
